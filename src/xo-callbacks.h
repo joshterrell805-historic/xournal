@@ -702,3 +702,7 @@ on_optionsAutosaveXoj_activate         (GtkMenuItem     *menuitem,
 void
 on_optionsLegacyPDFExport_activate     (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_optionsLargePenCursor_activate      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

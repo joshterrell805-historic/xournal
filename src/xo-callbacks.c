@@ -3848,3 +3848,14 @@ on_optionsLegacyPDFExport_activate     (GtkMenuItem     *menuitem,
   ui.exportpdf_prefer_legacy = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM (menuitem));
 }
 
+
+void
+on_optionsLargePenCursor_activate      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+  end_text();
+  ui.large_pencursor = gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM (menuitem));
+  update_cursor();
+  return;
+}
+

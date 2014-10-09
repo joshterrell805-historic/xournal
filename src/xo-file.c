@@ -1708,6 +1708,7 @@ void init_config_default(void)
   ui.bg_apply_all_pages = FALSE;
   ui.new_page_bg_from_pdf = FALSE;
   ui.use_erasertip = FALSE;
+  ui.large_pencursor = FALSE;
   ui.window_default_width = 1000;
   ui.window_default_height = 700;
   ui.maximize_at_start = FALSE;
@@ -1874,6 +1875,9 @@ void save_config_to_file(void)
   update_keyval("general", "use_erasertip",
     _(" always map eraser tip to eraser (true/false)"),
     g_strdup(ui.use_erasertip?"true":"false"));
+  update_keyval("general", "large_pencursor",
+    _(" use a large pen cursor (true/false)"),
+    g_strdup(ui.large_pencursor?"true":"false"));
   update_keyval("general", "touchscreen_as_hand_tool",
     _(" always map touchscreen device to hand tool (true/false) (requires separate pen and touch devices)"),
     g_strdup(ui.touch_as_handtool?"true":"false"));
@@ -2291,6 +2295,7 @@ void load_config_from_file(void)
   parse_keyval_boolean("general", "ignore_other_devices", &ui.ignore_other_devices);
   parse_keyval_boolean("general", "ignore_btn_reported_up", &ui.ignore_btn_reported_up);
   parse_keyval_boolean("general", "use_erasertip", &ui.use_erasertip);
+  parse_keyval_boolean("general", "large_pencursor", &ui.large_pencursor);
   parse_keyval_boolean("general", "touchscreen_as_hand_tool", &ui.touch_as_handtool);
   parse_keyval_boolean("general", "pen_disables_touch", &ui.pen_disables_touch);
   if (parse_keyval_string("general", "touchscreen_device_name", &str))

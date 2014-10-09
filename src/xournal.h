@@ -260,6 +260,7 @@ typedef struct UIData {
   int cur_mapping; // the current button number for mappings
   gboolean button_switch_mapping; // button clicks switch button 1 mappings
   gboolean use_erasertip;
+  gboolean large_pencursor;
   gboolean touch_as_handtool; // always map touch device to hand tool?
   gboolean pen_disables_touch; // pen proximity should disable touch device?
   gboolean in_proximity;

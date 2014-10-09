@@ -1641,6 +1641,17 @@
 			</child>
 		       </widget>
 		     </child>
+
+        <child>
+		    <widget class="GtkCheckMenuItem" id="optionsLargePenCursor">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">_Large pen cursor</property>
+		      <property name="use_underline">True</property>
+		      <property name="active">False</property>
+		      <signal name="activate" handler="on_optionsLargePenCursor_activate" last_modification_time="Tue, 23 Jul 2013 11:53:26 GMT"/>
+		    </widget>
+        </child>
+
 		  <child>
 		    <widget class="GtkMenuItem" id="button2_mapping">
 		      <property name="visible">True</property>

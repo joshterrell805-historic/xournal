@@ -80,6 +80,22 @@ GdkCursor *make_pen_cursor(guint color_rgba)
   return gdk_cursor_new_from_pixbuf(gdk_display_get_default(), ui.pen_cursor_pix, 7, 7);
 }
 
+GdkCursor *make_largepen_cursor(guint color_rgba)
+{
+   static char cursor_largepen_bits[] = {
+      0x00, 0x10, 0x00, 0x28, 0x00, 0x44, 0x00, 0x82, 0x00, 0x41, 0x80, 0x20,
+      0x40, 0x10, 0x20, 0x08, 0x10, 0x04, 0x08, 0x02, 0x04, 0x01, 0x86, 0x00,
+      0x4e, 0x00, 0x3e, 0x00, 0x1e, 0x00, 0x00, 0x00
+   };
+
+   GdkColor bg = {0, 65535, 65535, 65535};
+   GdkColor fg = {0, 0, 0, 0};
+   GdkPixmap *source = gdk_bitmap_create_from_data(NULL,
+    cursor_largepen_bits, 16, 16);
+
+   return gdk_cursor_new_from_pixmap(source, source, &fg, &bg, 1, 15);
+}
+
 GdkCursor *make_hiliter_cursor(guint color_rgba)
 {
   int rowstride, x, y;
@@ -127,7 +143,11 @@ void update_cursor(void)
   else if (ui.cur_item_type == ITEM_MOVESEL)
     ui.cursor = gdk_cursor_new(GDK_FLEUR);
   else if (ui.toolno[ui.cur_mapping] == TOOL_PEN) {
-    ui.cursor = make_pen_cursor(ui.cur_brush->color_rgba);
+    if (ui.large_pencursor) {
+      ui.cursor = make_largepen_cursor(ui.cur_brush->color_rgba);
+    } else {
+      ui.cursor = make_pen_cursor(ui.cur_brush->color_rgba);
+    }
   }
   else if (ui.toolno[ui.cur_mapping] == TOOL_ERASER) {
     ui.cursor = make_hiliter_cursor(0xffffffff);
